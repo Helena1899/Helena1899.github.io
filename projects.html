@@ -2,10 +2,71 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Projects</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    :root {
+      --bg-color: #ffffff;
+      --text-color: #000000;
+      --nav-bg: #333;
+      --nav-text: #f2f2f2;
+    }
+
+    body.dark-mode {
+      --bg-color: #121212;
+      --text-color: #f2f2f2;
+      --nav-bg: #1e1e1e;
+      --nav-text: #cccccc;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .navbar {
+      background-color: var(--nav-bg);
+      overflow: hidden;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .navbar a,
+    .navbar button {
+      float: left;
+      display: block;
+      color: var(--nav-text);
+      text-align: center;
+      padding: 14px 20px;
+      text-decoration: none;
+      border: none;
+      background: none;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .navbar a:hover,
+    .navbar button:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .content {
+      padding: 20px;
+    }
+
+    .toggle-btn {
+      float: right;
+    }
+  </style>
 </head>
 <body>
+
+  <!-- Top navigation bar -->
   <div class="navbar">
     <a href="index.html">Home</a>
     <a href="projects.html">Projects</a>
