@@ -69,6 +69,33 @@
       vertical-align: top; /* optional, for alignment */
       width: 200px; /* adjust as needed */
     }
+
+    .image-row {
+      display: flex;
+      gap: 20px;
+      justify-content: center; /* centers the whole row */
+      margin-top: 40px;
+    }
+
+    .image-container {
+      text-align: center;
+    }
+
+    .image-container img {
+      width: 200px;
+      height: 150px;
+      object-fit: cover; /* keeps the aspect ratio nicely */
+      display: block;
+      margin: 0 auto;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .image-label {
+      margin-top: 8px;
+      font-size: 16px;
+      color: #333;
+    }
     
   </style>
 </head>
@@ -99,11 +126,20 @@
       <li>Conducted user experiments and data analysis</li>
     </ul>
 
-    <div class="side-by-side">
-      <img src="https://github.com/user-attachments/assets/59caac8c-e485-4115-b980-16ed2094ae46" alt="Robot projecting virtual avatar during tour session">
-      <img src="https://github.com/user-attachments/assets/909f2355-df14-47c3-bfff-a68b929edc6d" alt="Point Cloud Reconstruction in Open3D">
-      <img src="image3.jpg" alt="Image 3">
+    <div class="image-row">
+    <div class="image-container">
+      <img src="https://github.com/user-attachments/assets/59caac8c-e485-4115-b980-16ed2094ae46" alt="Image 1">
+      <div class="image-label">Robot projecting virtual avatar during tour session</div>
     </div>
+    <div class="image-container">
+      <img src="https://github.com/user-attachments/assets/909f2355-df14-47c3-bfff-a68b929edc6d" alt="Image 2">
+      <div class="image-label">Point Cloud Reconstruction in Open3D</div>
+    </div>
+    <div class="image-container">
+      <img src="image3.jpg" alt="Image 3">
+      <div class="image-label">Label 3</div>
+    </div>
+  </div>
 
  </div>
 
