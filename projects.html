@@ -80,5 +80,26 @@
     <h1>Projects</h1>
     <p>Tour Guide Robot</p>
   </div>
+
+  <!-- Script to toggle theme -->
+  <script>
+    function setTheme(isDark) {
+      document.body.classList.toggle('dark-mode', isDark);
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    }
+
+    function toggleTheme() {
+      const isDark = !document.body.classList.contains('dark-mode');
+      setTheme(isDark);
+    }
+
+    // Load saved theme on page load
+    window.onload = () => {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'dark') {
+        document.body.classList.add('dark-mode');
+      }
+    };
+  </script>
 </body>
 </html>
