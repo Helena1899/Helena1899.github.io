@@ -7,19 +7,66 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      max-width: 700px;
-      margin: auto;
-      padding: 2rem;
+      margin: 0;
+      padding: 0;
     }
-    h1 {
-      color: #333;
+
+    /* Navbar styles */
+    .navbar {
+      background-color: #333;
+      overflow: hidden;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .navbar a {
+      float: left;
+      display: block;
+      color: #f2f2f2;
+      text-align: center;
+      padding: 14px 20px;
+      text-decoration: none;
+    }
+
+    .navbar a:hover {
+      background-color: #575757;
+    }
+
+    .content {
+      padding: 20px;
+    }
+
+    a.external-link {
+      color: #1a0dab;
     }
   </style>
 </head>
 <body>
-  <h1>Helena Sieh 👋</h1>
-  <p> Sophomore studying Robotics Engineering at the <a href="https://robotics.umich.edu/"> University of Michigan, Ann Arbor, MI USA </a> </p>
-  <p>Undergraduate Researcher, <a href="https://mavric.si.umich.edu/">MAVRIC Lab</a></p>
-  
+
+  <!-- Top navigation bar -->
+  <div class="navbar">
+    <a href="index.html">Home</a>
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+    <!-- External links -->
+    <a href="https://www.university.edu" target="_blank">University of Michigan</a>
+    <a href="https://mavric.si.umich.edu/" target="_blank">MAVRIC Lab</a>
+  </div>
+
+  <!-- Main content -->
+  <div class="content">
+    <h1>Hello, I'm Helena 👋</h1>
+
+    <p>I’m a student at the <a href="https://robotics.umich.edu/" target="_blank" class="external-link">University of Michigan</a>, currently working in <a href="https://mavric.si.umich.edu/" target="_blank">MAVRIC Lab</a> on exciting research!</p>
+
+    <h2 id="projects">Projects</h2>
+    <p>Details about your projects can go here.</p>
+
+    <h2 id="contact">Contact</h2>
+    <p>Email me at <a href="helenasi@umich.edu">helenasi@umich.edu</a></p>
+  </div>
+
 </body>
 </html>
