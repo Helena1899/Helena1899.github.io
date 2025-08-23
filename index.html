@@ -31,18 +31,25 @@
 
     .navbar {
       background-color: var(--nav-bg);
-      overflow: hidden;
       position: sticky;
       top: 0;
       z-index: 1000;
+
+      /* FLEXBOX layout */
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 10px;
     }
 
     .nav-left {
-      float: left;
+      display: flex;
+      gap: 10px;
     }
 
     .navbar a,
     .navbar button {
+      float: none;
       display: block;
       color: var(--nav-text);
       text-align: center;
@@ -52,11 +59,6 @@
       background: none;
       font-size: 16px;
       cursor: pointer;
-      float: left;
-    }
-
-    .toggle-btn {
-      float: right;
     }
 
     .navbar a:hover,
