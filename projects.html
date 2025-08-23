@@ -7,10 +7,13 @@
   <link rel="stylesheet" href="style.css">
   <style>
     :root {
-      --bg-color: #0a0f14;         /* dark, steel-like background */
-      --text-color: #cfd8dc;       /* light grey-blue text */
-      --nav-bg: #1c1f26;           /* slightly lighter nav bar */
-      --nav-text: #00ffc3;         /* neon cyan */
+      --bg-color: #0a0f14;
+      --text-color: #cfd8dc;
+      --nav-bg: #1c1f26;
+      --nav-text: #00ffc3;
+      --card-bg: #131921;
+      --card-hover: #1e2a38;
+      --accent-color: #00ffc3;
     }
 
     body.dark-mode {
@@ -18,19 +21,25 @@
       --text-color: #cfd8dc;
       --nav-bg: #1c1f26;
       --nav-text: #00ffc3;
+      --card-bg: #131921;
+      --card-hover: #1e2a38;
     }
 
     body {
       background-color: var(--bg-color);
       color: var(--text-color);
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', sans-serif;
       margin: 0;
       padding: 0;
+      line-height: 1.6;
     }
 
     .navbar {
       background-color: var(--nav-bg);
-      overflow: hidden;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
       position: sticky;
       top: 0;
       z-index: 1000;
@@ -38,15 +47,12 @@
 
     .navbar a,
     .navbar button {
-      float: left;
-      display: block;
       color: var(--nav-text);
-      text-align: center;
-      padding: 14px 20px;
       text-decoration: none;
+      padding: 14px 16px;
+      font-size: 16px;
       border: none;
       background: none;
-      font-size: 16px;
       cursor: pointer;
     }
 
@@ -55,113 +61,170 @@
       background-color: rgba(255, 255, 255, 0.1);
     }
 
-    .content {
-      padding: 20px;
-    }
-
     .toggle-btn {
-      float: right;
+      font-size: 20px;
+      transition: transform 0.2s;
     }
 
-    .side-by-side img {
-      display: inline-block;
-      margin-right: 10px; /* optional spacing */
-      vertical-align: top; /* optional, for alignment */
-      width: 300px; /* adjust as needed */
+    .toggle-btn:hover {
+      transform: scale(1.1);
+    }
+
+    .content {
+      padding: 40px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 36px;
+    }
+
+    .project-card {
+      background-color: var(--card-bg);
+      padding: 25px;
+      border-radius: 10px;
+      margin-bottom: 40px;
+      transition: background-color 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .project-card:hover {
+      background-color: var(--card-hover);
+    }
+
+    .project-card h2 {
+      margin-top: 0;
+      color: var(--accent-color);
+    }
+
+    .project-card p,
+    .project-card ul {
+      margin-bottom: 15px;
+    }
+
+    .project-card ul {
+      padding-left: 20px;
     }
 
     .image-row {
       display: flex;
+      flex-wrap: wrap;
       gap: 20px;
-      justify-content: center; /* centers the whole row */
-      margin-top: 40px;
+      margin-top: 20px;
+      justify-content: center;
     }
 
     .image-container {
       text-align: center;
+      flex: 1 1 300px;
     }
 
     .image-container img {
-      width: 300px;
-      height: 380px;
-      object-fit: cover; /* keeps the aspect ratio nicely */
-      display: block;
-      margin: 0 auto;
-      border: 1px solid #ccc;
+      width: 100%;
+      max-width: 300px;
+      height: 200px;
+      object-fit: cover;
       border-radius: 5px;
+      border: 1px solid #444;
+      transition: transform 0.3s ease;
+    }
+
+    .image-container img:hover {
+      transform: scale(1.05);
     }
 
     .image-label {
       margin-top: 8px;
-      font-size: 16px;
-      color: #333;
+      font-size: 14px;
+      color: #aaa;
     }
-    
+
+    .external-link {
+      color: var(--accent-color);
+      text-decoration: underline;
+    }
+
+    .external-link:hover {
+      opacity: 0.8;
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 28px;
+      }
+
+      .image-container img {
+        height: 180px;
+      }
+    }
   </style>
 </head>
 <body>
 
-  <!-- Top navigation bar -->
   <div class="navbar">
-    <a href="index.html">Home</a>
-    <a href="projects.html">Projects</a>
-    <a href="contact.html">Contact</a>
-
-    <!-- Dark mode toggle button -->
-    <button class="toggle-btn" onclick="toggleTheme()">🌙</button>
+    <div>
+      <a href="index.html">Home</a>
+      <a href="projects.html">Projects</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <button class="toggle-btn" onclick="toggleTheme()" id="themeIcon">🌙</button>
   </div>
 
   <div class="content">
-    <h1>Projects</h1>
-    <p> ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ </p>
-    <h2>Tour Guide Robot (May 2025 - Present)</h2>
-    <p> Study investigates the effects of a mixed-agent team on user satisfaction and learning performance in robot-guided tour scenarios, and to design a new metric, called Following, based on observable human behaviors. </p>
-  
-    <ul>
-      <li>Gained extensive hands-on experience with the Toyota Human Support Robot (HSR), operating within the ROS Noetic framework, and demonstrating proficiency with a complex service robot platform.</li>
-      <li>Developed and implemented a robust program for ArUco marker detection compatible with OpenCV 3.0 for the detection and pose estimation of the head</li>
-      <li>Coupled with PID control to precisely center detected markers within the HSR's head camera view, critical for accurate interaction targeting.</li>
-      <li>Developed a specialized program to accurately measure the angle of rotation of the ArUco marker, a key component for objectively quantifying the cognitive following metric when the robot directs participants' attention to specific visual targets.</li>
-      <li>Developed and integrated code for human pose and facial expression estimation utilizing OpenPose and MediaPipe, with a specific focus on extracting facial action units to facilitate nuanced analysis of user emotional responses throughout the tour</li>
-      <li>Conducted user experiments and data analysis</li>
-    </ul>
+    <h1>My Projects</h1>
 
-    <div class="image-row">
-    <div class="image-container">
-      <img src="https://github.com/user-attachments/assets/59caac8c-e485-4115-b980-16ed2094ae46" alt="Image 1">
-      <div class="image-label">Robot projecting virtual avatar during tour session</div>
+    <div class="project-card">
+      <h2>Tour Guide Robot <small>(May 2025 - Present)</small></h2>
+      <p>
+        Study investigates the effects of a mixed-agent team on user satisfaction and learning performance in robot-guided tour scenarios, and introduces a novel metric, "Following," based on observable human behaviors.
+      </p>
+      <ul>
+        <li>Hands-on experience with Toyota HSR in ROS Noetic framework.</li>
+        <li>ArUco marker detection with OpenCV 3.0 and PID control for head alignment.</li>
+        <li>Angle of rotation measurement to quantify "Following" behavior.</li>
+        <li>Human pose & facial expression tracking with OpenPose and MediaPipe.</li>
+        <li>User experiment design and data analysis.</li>
+      </ul>
+      <div class="image-row">
+        <div class="image-container">
+          <img src="https://github.com/user-attachments/assets/59caac8c-e485-4115-b980-16ed2094ae46" alt="Robot projecting avatar">
+          <div class="image-label">Robot projecting virtual avatar</div>
+        </div>
+        <div class="image-container">
+          <img src="https://github.com/user-attachments/assets/909f2355-df14-47c3-bfff-a68b929edc6d" alt="Point cloud reconstruction">
+          <div class="image-label">Point Cloud Reconstruction</div>
+        </div>
+        <div class="image-container">
+          <img src="image3.jpg" alt="Additional Image">
+          <div class="image-label">Label 3</div>
+        </div>
+      </div>
     </div>
-    <div class="image-container">
-      <img src="https://github.com/user-attachments/assets/909f2355-df14-47c3-bfff-a68b929edc6d" alt="Image 2">
-      <div class="image-label">Point Cloud Reconstruction in Open3D</div>
-    </div>
-    <div class="image-container">
-      <img src="image3.jpg" alt="Image 3">
-      <div class="image-label">Label 3</div>
+
+    <div class="project-card">
+      <h2>Extracting Human Visual Perspective from Robot Sensors <small>(Sept 2024 - May 2025)</small></h2>
+      <p>
+        We propose a multi-modal human VPT extraction algorithm using VSLAM for environment mapping and RGB-D data for gaze direction estimation. The approach is validated with both simulated and real-world trials.
+      </p>
+      <a href="https://ibb.co/JjS27991">
+        <img src="https://i.ibb.co/yFx5yrr9/Screenshot-2025-08-22-at-7-55-56-PM.png" alt="VPT Estimation" style="display: block; margin: 0 auto; width: 400px; height: 300px;" border="0">
+      </a>
+      <div class="image-label" style="text-align: center;">VPT Estimation Algorithm</div>
+      <p>
+        More info available in our 
+        <a href="https://www.canva.com/design/DAGw2IG7jmQ/gMPsD4XxfAg-cBsO1hOlig/view?utm_content=DAGw2IG7jmQ&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h5068b9ed85" 
+        target="_blank" class="external-link">UROP Spring Symposium poster</a>.
+      </p>
     </div>
   </div>
 
-
-    <br>
-    <br>
-    <br>
-
-    
-    <h2>Extracting Human Visual Perspective From Robot Sensors (Sept 2024 - May 2025)</h2>
-
-    <p> We propose a new multi modal human VPT extraction algorithm using Visual Simultaneous Localization and Mapping (VSLAM) to map out environment and RGB-D data to determine head and gaze positions. We then estimated the direction of the human's VPT with an image model and head position. Algorithm was validated through simulated and real-world testing offering a reliable method for robots to understand human perspectives in real-time. Future work will focus on improving the algorithm’s real-world applications</p>
-
-    <a href="https://ibb.co/JjS27991"><img src="https://i.ibb.co/yFx5yrr9/Screenshot-2025-08-22-at-7-55-56-PM.png" alt="Screenshot-2025-08-22-at-7-55-56-PM" style="display: block; margin: 0 auto; width: 400px; height: 300px;" border="0"></a>
-    <div class="image-label"; style="text-align: center;">VPT Estimation Algorithm</div>
-
-
-    <p> For more information about this project, check our <a href="https://www.canva.com/design/DAGw2IG7jmQ/gMPsD4XxfAg-cBsO1hOlig/view?utm_content=DAGw2IG7jmQ&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h5068b9ed85" target="_blank" class="external-link">research poster</a> we presented at the 2025 UROP Spring Symposium organized by the Undergraduate Research Opportunity Program.</p>
-  </div>
-
-  <!-- Script to toggle theme -->
   <script>
     function setTheme(isDark) {
       document.body.classList.toggle('dark-mode', isDark);
+      document.getElementById('themeIcon').textContent = isDark ? '🌞' : '🌙';
       localStorage.setItem('theme', isDark ? 'dark' : 'light');
     }
 
@@ -170,12 +233,10 @@
       setTheme(isDark);
     }
 
-    // Load saved theme on page load
     window.onload = () => {
       const savedTheme = localStorage.getItem('theme');
-      if (savedTheme === 'dark') {
-        document.body.classList.add('dark-mode');
-      }
+      const isDark = savedTheme === 'dark';
+      setTheme(isDark);
     };
   </script>
 </body>
