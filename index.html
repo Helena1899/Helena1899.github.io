@@ -37,9 +37,12 @@
       z-index: 1000;
     }
 
+    .nav-left {
+      float: left;
+    }
+
     .navbar a,
     .navbar button {
-      float: left;
       display: block;
       color: var(--nav-text);
       text-align: center;
@@ -49,6 +52,11 @@
       background: none;
       font-size: 16px;
       cursor: pointer;
+      float: left;
+    }
+
+    .toggle-btn {
+      float: right;
     }
 
     .navbar a:hover,
@@ -59,10 +67,6 @@
     .content {
       padding: 20px;
       text-align: center; /* Center content */
-    }
-
-    .toggle-btn {
-      float: right;
     }
 
     .profile-pic {
@@ -98,9 +102,11 @@
 <body>
 
   <div class="navbar">
-    <a href="index.html">Home</a>
-    <a href="projects.html">Projects</a>
-    <a href="contact.html">Contact</a>
+    <div class="nav-left">
+      <a href="index.html">Home</a>
+      <a href="projects.html">Projects</a>
+      <a href="contact.html">Contact</a>
+    </div>
     <button id="themeToggleBtn" class="toggle-btn" onclick="toggleTheme()">🌙</button>
   </div>
 
@@ -118,7 +124,6 @@
       <li>Spent three amazing years in Barcelona, Spain, playing futsal</li>
     </ul>
   </div>
-
 
   <script>
     function setTheme(isDark) {
