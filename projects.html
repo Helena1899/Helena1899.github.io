@@ -10,7 +10,7 @@
 
   <style>
     :root {
-      /* DARK THEME (Default) */
+      /* DARK THEME DEFAULTS */
       --bg-color: #0a0f14;
       --text-color: #cfd8dc;
       --nav-bg: #1c1f26;
@@ -200,7 +200,7 @@
       <a href="projects.html">Projects</a>
       <a href="contact.html">Contact</a>
     </div>
-    <button class="toggle-btn" onclick="toggleTheme()" id="themeIcon">🌙</button>
+    <button class="toggle-btn" id="themeToggle" onclick="toggleTheme()">🌙</button>
   </div>
 
   <div class="content">
@@ -261,46 +261,45 @@
         </p>
       </div>
     </div>
-
   </div>
 
-  <!-- THEME TOGGLE SCRIPT -->
+  <!-- Theme Toggle Script -->
   <script>
-    function setTheme(isDark) {
-      const body = document.body;
-      if (isDark) {
-        body.classList.remove('light-mode');
-        document.getElementById('themeIcon').textContent = '🌞';
-        localStorage.setItem('theme', 'dark');
+    const toggleBtn = document.getElementById('themeToggle');
+
+    function applyTheme(theme) {
+      if (theme === 'light') {
+        document.body.classList.add('light-mode');
+        toggleBtn.textContent = '🌙';
       } else {
-        body.classList.add('light-mode');
-        document.getElementById('themeIcon').textContent = '🌙';
-        localStorage.setItem('theme', 'light');
+        document.body.classList.remove('light-mode');
+        toggleBtn.textContent = '🌞';
       }
+      localStorage.setItem('theme', theme);
     }
 
     function toggleTheme() {
-      const isDark = !document.body.classList.contains('light-mode');
-      setTheme(isDark);
+      const isLight = document.body.classList.contains('light-mode');
+      applyTheme(isLight ? 'dark' : 'light');
     }
 
-    window.onload = () => {
-      const saved = localStorage.getItem('theme');
-      setTheme(saved !== 'light');
-    };
+    // Load saved theme
+    window.addEventListener('DOMContentLoaded', () => {
+      const savedTheme = localStorage.getItem('theme') || 'dark';
+      applyTheme(savedTheme);
+    });
   </script>
 
-  <!-- Expandable Cards Script -->
+  <!-- Expandable Card Script -->
   <script>
     function toggleCard(headerEl) {
       const card = headerEl.closest('.project-card');
       card.classList.toggle('expanded');
-      const icon = headerEl.querySelector('.expand-icon');
-      icon.classList.toggle('rotate');
+      headerEl.querySelector('.expand-icon').classList.toggle('rotate');
     }
   </script>
 
-  <!-- AOS JS -->
+  <!-- AOS.js -->
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <script>
     AOS.init({
