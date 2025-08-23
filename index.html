@@ -85,7 +85,7 @@
     <a href="contact.html">Contact</a>
 
     <!-- Dark mode toggle button -->
-    <button class="toggle-btn" onclick="toggleTheme()">🌙</button>
+    <button id="themeToggleBtn" class="toggle-btn" onclick="toggleTheme()">🌙</button>
   </div>
 
   <!-- Main content -->
@@ -112,23 +112,25 @@
     function setTheme(isDark) {
       document.body.classList.toggle('dark-mode', isDark);
       localStorage.setItem('theme', isDark ? 'dark' : 'light');
+  
+      // 🔄 Update icon
+      const toggleBtn = document.getElementById('themeToggleBtn');
+      toggleBtn.textContent = isDark ? '☀️' : '🌙';
     }
   
     function toggleTheme() {
-      const isDark = document.body.classList.contains('dark-mode');
-      setTheme(!isDark);
+      const isCurrentlyDark = document.body.classList.contains('dark-mode');
+      setTheme(!isCurrentlyDark);
     }
   
-    // Load saved theme on page load
+    // Load saved theme and set correct icon on page load
     window.onload = () => {
       const savedTheme = localStorage.getItem('theme');
-      if (savedTheme === 'dark') {
-        document.body.classList.add('dark-mode');
-      } else {
-        document.body.classList.remove('dark-mode'); // ✅ make sure light mode is applied
-      }
+      const isDark = savedTheme === 'dark';
+      setTheme(isDark);
     };
   </script>
+
 
 </body>
 </html>
