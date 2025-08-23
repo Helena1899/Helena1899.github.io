@@ -4,7 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Projects</title>
-  <link rel="stylesheet" href="style.css">
+
+  <!-- AOS CSS -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
   <style>
     :root {
       --bg-color: #0a0f14;
@@ -95,18 +98,31 @@
       background-color: var(--card-hover);
     }
 
-    .project-card h2 {
-      margin-top: 0;
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .card-title {
+      font-size: 24px;
       color: var(--accent-color);
     }
 
-    .project-card p,
-    .project-card ul {
-      margin-bottom: 15px;
+    .expand-icon {
+      font-size: 20px;
+      transition: transform 0.3s ease;
     }
 
-    .project-card ul {
-      padding-left: 20px;
+    .expand-icon.rotate {
+      transform: rotate(90deg);
+    }
+
+    .card-body {
+      margin-top: 15px;
+      display: block;
+      transition: all 0.3s ease;
     }
 
     .image-row {
@@ -152,12 +168,22 @@
     }
 
     @media (max-width: 768px) {
-      h1 {
-        font-size: 28px;
+      .card-body {
+        display: none;
       }
 
-      .image-container img {
-        height: 180px;
+      .project-card.expanded .card-body {
+        display: block;
+      }
+
+      .expand-icon {
+        display: inline;
+      }
+    }
+
+    @media (min-width: 769px) {
+      .expand-icon {
+        display: none;
       }
     }
   </style>
@@ -174,53 +200,67 @@
   </div>
 
   <div class="content">
-    <h1>My Projects</h1>
+    <h1 data-aos="fade-down">My Projects</h1>
 
-    <div class="project-card">
-      <h2>Tour Guide Robot <small>(May 2025 - Present)</small></h2>
-      <p>
-        Study investigates the effects of a mixed-agent team on user satisfaction and learning performance in robot-guided tour scenarios, and introduces a novel metric, "Following," based on observable human behaviors.
-      </p>
-      <ul>
-        <li>Hands-on experience with Toyota HSR in ROS Noetic framework.</li>
-        <li>ArUco marker detection with OpenCV 3.0 and PID control for head alignment.</li>
-        <li>Angle of rotation measurement to quantify "Following" behavior.</li>
-        <li>Human pose & facial expression tracking with OpenPose and MediaPipe.</li>
-        <li>User experiment design and data analysis.</li>
-      </ul>
-      <div class="image-row">
-        <div class="image-container">
-          <img src="https://github.com/user-attachments/assets/59caac8c-e485-4115-b980-16ed2094ae46" alt="Robot projecting avatar">
-          <div class="image-label">Robot projecting virtual avatar</div>
-        </div>
-        <div class="image-container">
-          <img src="https://github.com/user-attachments/assets/909f2355-df14-47c3-bfff-a68b929edc6d" alt="Point cloud reconstruction">
-          <div class="image-label">Point Cloud Reconstruction</div>
-        </div>
-        <div class="image-container">
-          <img src="image3.jpg" alt="Additional Image">
-          <div class="image-label">Label 3</div>
+    <!-- Project 1 -->
+    <div class="project-card" data-aos="fade-up">
+      <div class="card-header" onclick="toggleCard(this)">
+        <span class="card-title">Tour Guide Robot <small>(May 2025 - Present)</small></span>
+        <span class="expand-icon">▶</span>
+      </div>
+      <div class="card-body">
+        <p>
+          Study investigates the effects of a mixed-agent team on user satisfaction and learning performance in robot-guided tour scenarios, and introduces a novel metric, "Following," based on observable human behaviors.
+        </p>
+        <ul>
+          <li>Hands-on experience with Toyota HSR in ROS Noetic framework.</li>
+          <li>ArUco marker detection with OpenCV 3.0 and PID control for head alignment.</li>
+          <li>Angle of rotation measurement to quantify "Following" behavior.</li>
+          <li>Human pose & facial expression tracking with OpenPose and MediaPipe.</li>
+          <li>User experiment design and data analysis.</li>
+        </ul>
+        <div class="image-row">
+          <div class="image-container">
+            <img src="https://github.com/user-attachments/assets/59caac8c-e485-4115-b980-16ed2094ae46" alt="Robot projecting avatar">
+            <div class="image-label">Robot projecting virtual avatar</div>
+          </div>
+          <div class="image-container">
+            <img src="https://github.com/user-attachments/assets/909f2355-df14-47c3-bfff-a68b929edc6d" alt="Point cloud reconstruction">
+            <div class="image-label">Point Cloud Reconstruction</div>
+          </div>
+          <div class="image-container">
+            <img src="image3.jpg" alt="Image 3">
+            <div class="image-label">Label 3</div>
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="project-card">
-      <h2>Extracting Human Visual Perspective from Robot Sensors <small>(Sept 2024 - May 2025)</small></h2>
-      <p>
-        We propose a multi-modal human VPT extraction algorithm using VSLAM for environment mapping and RGB-D data for gaze direction estimation. The approach is validated with both simulated and real-world trials.
-      </p>
-      <a href="https://ibb.co/JjS27991">
-        <img src="https://i.ibb.co/yFx5yrr9/Screenshot-2025-08-22-at-7-55-56-PM.png" alt="VPT Estimation" style="display: block; margin: 0 auto; width: 400px; height: 300px;" border="0">
-      </a>
-      <div class="image-label" style="text-align: center;">VPT Estimation Algorithm</div>
-      <p>
-        More info available in our 
-        <a href="https://www.canva.com/design/DAGw2IG7jmQ/gMPsD4XxfAg-cBsO1hOlig/view?utm_content=DAGw2IG7jmQ&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h5068b9ed85" 
-        target="_blank" class="external-link">UROP Spring Symposium poster</a>.
-      </p>
+    <!-- Project 2 -->
+    <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+      <div class="card-header" onclick="toggleCard(this)">
+        <span class="card-title">Extracting Human Visual Perspective <small>(Sept 2024 - May 2025)</small></span>
+        <span class="expand-icon">▶</span>
+      </div>
+      <div class="card-body">
+        <p>
+          A multi-modal human VPT extraction algorithm using VSLAM and RGB-D data. It estimates gaze direction and head pose to understand human perspective in real time. Validated in simulated and real-world settings.
+        </p>
+        <a href="https://ibb.co/JjS27991">
+          <img src="https://i.ibb.co/yFx5yrr9/Screenshot-2025-08-22-at-7-55-56-PM.png" alt="VPT Estimation" style="display: block; margin: 0 auto; width: 400px; height: 300px;" border="0">
+        </a>
+        <div class="image-label" style="text-align: center;">VPT Estimation Algorithm</div>
+        <p>
+          More info available in our 
+          <a href="https://www.canva.com/design/DAGw2IG7jmQ/gMPsD4XxfAg-cBsO1hOlig/view?utm_content=DAGw2IG7jmQ&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h5068b9ed85" 
+          target="_blank" class="external-link">UROP Spring Symposium poster</a>.
+        </p>
+      </div>
     </div>
+
   </div>
 
+  <!-- Toggle Theme Script -->
   <script>
     function setTheme(isDark) {
       document.body.classList.toggle('dark-mode', isDark);
@@ -235,9 +275,28 @@
 
     window.onload = () => {
       const savedTheme = localStorage.getItem('theme');
-      const isDark = savedTheme === 'dark';
-      setTheme(isDark);
+      setTheme(savedTheme === 'dark');
     };
+  </script>
+
+  <!-- Expandable Cards Script -->
+  <script>
+    function toggleCard(headerEl) {
+      const card = headerEl.closest('.project-card');
+      card.classList.toggle('expanded');
+
+      const icon = headerEl.querySelector('.expand-icon');
+      icon.classList.toggle('rotate');
+    }
+  </script>
+
+  <!-- AOS JS -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 700,
+      once: true,
+    });
   </script>
 </body>
 </html>
