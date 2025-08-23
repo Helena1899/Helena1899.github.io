@@ -175,13 +175,22 @@
       opacity: 0.8;
     }
 
+    html, body {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .content {
+      flex: 1; /* pushes footer down */
+    }
+    
     .footer {
       background-color: var(--nav-bg);
       color: var(--text-color);
       text-align: center;
-      padding: 20px;
-      font-size: 14px;
-      margin-top: 40px;
+      padding: 8px;      /* thinner */
+      font-size: 12px;   /* smaller text */
       border-top: 1px solid rgba(255,255,255,0.1);
     }
   </style>
