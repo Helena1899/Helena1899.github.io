@@ -119,14 +119,18 @@
       transition: transform 0.3s ease;
     }
 
-    .expand-icon.rotate {
-      transform: rotate(90deg);
+    .card-body {
+      display: none;
+      margin-top: 15px;
+      transition: all 0.3s ease;
     }
 
-    .card-body {
-      margin-top: 15px;
+    .project-card.expanded .card-body {
       display: block;
-      transition: all 0.3s ease;
+    }
+
+    .project-card.expanded .expand-icon {
+      transform: rotate(90deg);
     }
 
     .image-row {
@@ -170,30 +174,11 @@
     .external-link:hover {
       opacity: 0.8;
     }
-
-    @media (max-width: 768px) {
-      .card-body {
-        display: none;
-      }
-
-      .project-card.expanded .card-body {
-        display: block;
-      }
-
-      .expand-icon {
-        display: inline;
-      }
-    }
-
-    @media (min-width: 769px) {
-      .expand-icon {
-        display: none;
-      }
-    }
   </style>
 </head>
 <body>
 
+  <!-- Navigation Bar -->
   <div class="navbar">
     <div>
       <a href="index.html">Home</a>
@@ -203,6 +188,7 @@
     <button class="toggle-btn" id="themeToggle" onclick="toggleTheme()">🌙</button>
   </div>
 
+  <!-- Main Content -->
   <div class="content">
     <h1 data-aos="fade-down">My Projects</h1>
 
@@ -290,16 +276,15 @@
     });
   </script>
 
-  <!-- Expandable Card Script -->
+  <!-- Expand/Collapse Script -->
   <script>
     function toggleCard(headerEl) {
       const card = headerEl.closest('.project-card');
       card.classList.toggle('expanded');
-      headerEl.querySelector('.expand-icon').classList.toggle('rotate');
     }
   </script>
 
-  <!-- AOS.js -->
+  <!-- AOS JS -->
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <script>
     AOS.init({
