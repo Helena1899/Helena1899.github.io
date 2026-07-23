@@ -566,11 +566,14 @@
             </p>
             <p class="body-section-label">Contributions</p>
             <ul>
-              <li>Implemented a sensor fusion system integrating GNSS, IMU, and LiDAR for real-time SLAM and autonomous navigation.</li>
-              <li>Tuned Kalman filters and optimized occupancy grids to improve localization accuracy and mapping consistency.</li>
-              <li>Developed path planning algorithms for autonomous vehicle navigation in complex environments.</li>
-              <li>Collaborated with a multidisciplinary team on system integration and testing protocols.</li>
-              <li>Optimized sensor calibration procedures to enhance overall system performance.</li>
+              <li>Built context-aware sensor fusion pipeline switching between lane-following and no-man's land modes based on environment</li>
+              <li>Implemented GNSS + ZED2i fusion with Kalman Filter tuning for precise robot positioning in lane-following mode</li>
+              <li>Developed lat/lon-to-map coordinate conversion transforming GNSS data into local robot coordinate frame</li>
+              <li>Processed LiDAR PointCloud2 data and generated occupancy grids for obstacle detection in no-man's land</li>
+              <li>Authored ROS launch scripts automating sensor initialization and configuration across uBlox GPS, ZED2i camera, and Velodyne VLP-16 LiDAR</li>
+              <li>Diagnosed and resolved a previously undiagnosed sensor fusion failure that had limited competition performance</li>
+              <li>Contributed to Michigan's best year-on-year IGVC result and National Design Report Finalist recognition (2025)</li>
+              <mem>View <a href="http://www.igvc.org/design/2025/18.pdf" target="_blank" class="card-link">Design Report</a></mem>
             </ul>
           </div>
         </div>
